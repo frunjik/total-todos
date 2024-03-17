@@ -1,0 +1,4 @@
+/tmp/
+node_modules
+index.js.*
+index.pid

@@ -1,0 +1,5 @@
+name                       : jComponent
+database                   : YOUR-CONNECTION-STRING
+
+// Total.js API services:
+// totalapi                   : YOUR TOKEN
