@@ -1,6 +1,6 @@
 <ui-component name="form" path="common.form" config="if:todo;width:500;icon:todo;submit:?/submit;reload:?/reload;autofocus:1" plugin="~PATH~" class="hidden">
 	<div class="padding">
-		<ui-component name="input" path="?.title" config="required:1;maxlength:50" class="m">Todo ...</ui-component>
+		<ui-component name="input" path="?.title" config="required:1;maxlength:50" class="m">Title</ui-component>
 	</div>
 	<nav>
 		<ui-component name="validate" path="?">
@@ -18,15 +18,19 @@
 			var model = exports.model;
 			com.reconfigure({ title: model.id ? 'Edit todo' : 'Add todo' });
 		};
-
+        
 		exports.submit = function(hide) {
-			var model = exports.form;
+            var model = exports.form;
 			exports.ajax('POST /api/todos/ @showloading ERROR', model, function(response) {
-				// exports.caller "todos" plugin
-				// Refresh data in grid
+                // Reset form
+                SET('? @default', {});
 
+                // exports.caller "todos" plugin
+				// Refresh data in grid
 				exports.caller && exports.caller.exec('refresh');
-				hide();
+
+                // hide form
+                hide();
 			});
 		};
 	});
