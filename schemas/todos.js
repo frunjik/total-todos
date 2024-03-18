@@ -42,7 +42,7 @@ NEWSCHEMA('Todos', function(schema) {
             model.id = UID();
             model.dtcreated = NOW;
             // Create a search string for the todo
-            model.search = (model.title + ' ' + model.description + ' ' + model.author + ' ' + model.year).toSearch();
+            model.search = (model.title).toSearch();
             // Add the new todo to the array
             Todos.push(model);
             // Callback with the ID of the inserted todo
