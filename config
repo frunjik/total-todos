@@ -1,5 +1,7 @@
 name                       : jComponent
 database                   : YOUR-CONNECTION-STRING
 
+table_todos                : id:UID,title:string,dtcreated:date,dtupdated:date
+
 // Total.js API services:
 // totalapi                   : YOUR TOKEN
