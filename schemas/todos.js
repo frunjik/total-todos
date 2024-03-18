@@ -30,7 +30,7 @@ NEWSCHEMA('Todos', function(schema) {
 
             TodosTable
                 .insert(model)
-                .callback($.callback);
+                .callback($.done(model.id));
 
         }
     });
@@ -56,7 +56,7 @@ NEWSCHEMA('Todos', function(schema) {
         action: function($) {
 
             TodosTable
-                .clear($.callback);
+                .clear($.done());
 
         } 
     });
