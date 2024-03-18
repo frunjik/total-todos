@@ -28,14 +28,26 @@ NEWSCHEMA('Todos', function(schema) {
             model.id = UID();
             model.dtcreated = NOW;
 
-            // // Create a search string for the todo
-            // model.search = (model.title).toSearch();
-
             TodosTable
                 .insert(model)
                 .callback($.callback);
 
         }
+    });
+
+    // Action for removing a single todo (identified by id)
+    schema.action('remove', {
+        name: 'Remove todo',
+        params: '*id:String',
+        action: function($) {
+
+            TodosTable
+                .remove()
+                .where('id', '=', $.params.id)
+                .callback($.done())
+                ;
+
+        } 
     });
 
     // Action for removing all todos

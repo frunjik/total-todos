@@ -21,7 +21,8 @@
         
 		exports.submit = function(hide) {
             var model = exports.form;
-			exports.ajax('POST /api/todos/ @showloading ERROR', model, function(response) {
+
+            exports.ajax('POST /api/todos/ @showloading ERROR', model, function(response) {
 
                 // Reset form
                 SET('? @default', {});

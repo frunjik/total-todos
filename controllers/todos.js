@@ -4,10 +4,10 @@ exports.install = function() {
     ROUTE('GET      /api/todos/         *Todos --> query');   // Query all todos
     ROUTE('POST     /api/todos/         *Todos --> insert');  // Insert a new todo
     ROUTE('POST     /api/todos_wipe/    *Todos --> wipe');    // Remove all todos
+    ROUTE('DELETE   /api/todos/{id}/    *Todos --> remove');  // Remove a specific todo by ID (- does not expect payload data)
 
     // ROUTE('GET      /api/todos/{id}/    *Todos --> read');    // Read a specific todo by ID
     // ROUTE('PUT      /api/todos/{id}/    *Todos --> update');  // Update a specific todo by ID (+ expects payload data, validated in schema)
-    // ROUTE('DELETE   /api/todos/{id}/    *Todos --> remove');  // Remove a specific todo by ID (- does not expect payload data)
 
     // // **API** routing using different conventions
 

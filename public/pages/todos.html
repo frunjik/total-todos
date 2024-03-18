@@ -9,7 +9,10 @@
 	<div data-bind="?.data__template">
 		<script type="text/html">
 			{{ foreach m in value }}
-				<div>{{ m.title }}</div>
+				<div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 50vw;">
+                    <p>{{ m.title }}</p>
+                    <a class="exec link" data-value="{{m.id}}" data-exec="?/remove">X</a>
+                </div>
 			{{ end }}
 		</script>
 	</div>
@@ -25,8 +28,22 @@
 		};
 
 		exports.create = function() {
-			SET('todosform @default', {});
+            // show the todo form
 			SET('common.form', 'todo');
 		};
+
+        exports.remove = function(el) {
+            // remove todo - get id from data-value
+            const id = el.attr('data-value');
+
+            // call backend API method
+            exports.ajax(`DELETE /api/todos/${id} @showloading ERROR`, function(response) {
+    
+                // Refresh data in grid
+                exports.refresh();
+            });
+		};
+
+
 	});
 </script>
